@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a routerLink="/routing">Home</a>
+                </li>
+                <li role="presentation" routerLinkActive="active">
+                    <a (click)="onServer()">Servers</a>
+                </li>
+                <li role="presentation" routerLinkActive="active">
+                    <a (click)="onUsers()">Users</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <h4>Welcome to Server Manager 4.0</h4>
+            <p>Manage your Servers and Users.</p>
+            <button class="btn-primary" (click)="onLoadServer(1)">Load Server 1</button>
+            <button class="btn-default" (click)="onLogin()">Login</button>
+            <button class="btn-default" (click)="onLogout()">Logout</button>
+            <button class="btn-default" (click)="onActivate()">Activated</button>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

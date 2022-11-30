@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- using local reference to send the form data created by angular into you TS component  -->
+            <form (ngSubmit)="onsubmit()" #f="ngForm">
+                <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+
+                    <div class="form-group">
+                        <label for="email">Mail</label>
+                        <input type="email" id="email" class="form-control" required email ngModel name="email" #email="ngModel">
+                        <!-- display email validation message if the email field has been touched  -->
+                        <span class="help-block" *ngIf="!email.valid && email.touched">
+                            Please enter a valid email!
+                        </span>
+                        <p *ngIf="!userData.valid && userData.touched"> User data is invalid!</p>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" ngModel ngNativeValidate required name="password">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="subscription">Subscription type</label>
+                    <select id="subscription" class="form-control" [ngModel]="defaultSub" name="subscription">
+              <option value="Basic">Basic</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Pro">Prod</option>
+            </select>
+                </div>
+                <div class="row">
+                    <div class=" col-xs-12">
+                        <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
+                    </div>
+                </div>
+                <div class="row" *ngIf="submitted">
+                    <div class="col-xs-12">
+                        <h3>Your data:</h3>
+                        <p>Mail: {{user.mail}}</p>
+                        <p>Subscription:{{user.subs}}</p>
+                        <p>Password:{{user.password}}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

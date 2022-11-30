@@ -1,0 +1,70 @@
+<div class="container">
+    <h3>Template dirven forms</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- using local reference to send the form data created by angular into you TS component  -->
+            <form (ngSubmit)="onsubmit()" #f="ngForm">
+                <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" ngModel ngNativeValidate required name="username">
+                    </div>
+                    <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+                    <div class="form-group">
+                        <label for="email">Mail</label>
+                        <input type="email" id="email" class="form-control" required email ngModel name="email" #email="ngModel">
+                        <!-- display email validation message if the email field has been touched  -->
+                        <span class="help-block" *ngIf="!email.valid && email.touched">
+                            Please enter a valid email!
+                        </span>
+                        <p *ngIf="!userData.valid && userData.touched"> User data is invalid!</p>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="secret">Secret Questions</label>
+                    <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret">
+              <option value="pet">Your first Pet?</option>
+              <option value="teacher">Your first teacher?</option>
+            </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="questionAnswer" [(ngModel)]="Answer" class="form-control" rows="3"></textarea>
+
+                </div>
+                <p>Your Reply: {{Answer}}</p>
+                <div class="radio" *ngFor="let gender of gender">
+                    <label>
+                        <input type="radio"
+                        name="gender"
+                        ngModel
+                        [value]="gender"
+                        required>
+                        {{gender}}
+                    </label>
+                </div>
+                <div class="row">
+                    <div class=" col-xs-12">
+                        <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Submit</button>
+                        <button class="btn btn-danger" [routerLink]="['/formsAssessment']">Assessment</button>
+                    </div>
+                </div>
+                <div class="row" *ngIf="submitted">
+                    <div class="col-xs-12">
+                        <h3>Your data:</h3>
+                        <p>Username: {{user.username}}
+                        </p>
+                        <p>Mail: {{user.mail}}</p>
+                        <p>Secret Question: {{user.secretQuestion}}</p>
+                        <p>Answer:{{user.answer}}</p>
+                        <p>Gender:{{user.gender}}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+<h3>Reactive forms</h3>
+<router-outlet></router-outlet>

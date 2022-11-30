@@ -1,0 +1,32 @@
+<app-game-control (intervalFired)="onGameStarted($event)">
+
+</app-game-control>
+<div class="row">
+    <div class="col-md-6">
+        <app-even [evenNumber]="evenNumbers"></app-even>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default odd">
+            <div>
+                <h3>Odd Numbers</h3>
+
+                <app-odd class="odd" [oddNumber]="oddNumbers" *ngFor="let number of oddNumbers">
+                    <div class="panel-body">
+                        <p #contentParagraph>{{number}}</p>
+                    </div>
+                </app-odd>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <h3 style="text-align: center;">All Numbers</h3>
+        <div class="col-md-12">
+            <div class="panel-body" *ngFor="let all of allNumbers">
+                <p style="text-align: center;" *ngIf="all % 2 !== 0" class="odd"> Odd-{{all}}</p>
+                <p style="text-align: center;" *ngIf="all % 2 === 0"> Even-{{all}}</p>
+            </div>
+        </div>
+    </div>
+</div>

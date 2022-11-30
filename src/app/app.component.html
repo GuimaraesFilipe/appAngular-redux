@@ -1,0 +1,48 @@
+<app-header-component (rc)="recipeClicked($event)" (sp)="shoppingClicked($event)">
+
+
+</app-header-component>
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-md-12">
+
+            <app-recipes *ngIf="showRecepi"></app-recipes>
+            <hr>
+            <app-shoppingList *appUnlessDirective="!showList"></app-shoppingList>
+        </div>
+    </div>
+    <hr> -->
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <app-assessment-data-binding>
+            </app-assessment-data-binding>
+        </div>
+    </div> -->
+    <!-- <p appbasicHighlight>Using My Own Directive</p>
+    <p appBetterhighlight [defaultColor]="'blue'" [highlightColor]="'red'">Using My Own Directive</p>
+
+    <div [ngSwitch]="value">
+        <p *ngSwitchCase="2"> Value is 2</p>
+        <p *ngSwitchCase="10"> Value is 10</p>
+        <p *ngSwitchCase="100"> Value is 100</p>
+        <p *ngSwitchDefault> Value is Default</p>
+
+    </div> -->
+    <!-- <app-services-module></app-services-module> -->
+
+    <!-- <app-services-assessment></app-services-assessment>
+</div> -->
+
+
+
+
+    <div class="container">
+        <p *ngIf="obsActivate">Activated!</p>
+        <div class="row">
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,8 @@
+p {
+    color: green;
+    font-weight: bold;
+}
+
+.panel-default {
+    border-color: blue;
+}

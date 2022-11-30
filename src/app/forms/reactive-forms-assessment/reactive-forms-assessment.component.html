@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+                <div formGroupName="projectData">
+                    <div class="form-group ">
+
+                        <label for="projectname">Project Name</label>
+                        <input type="text " id="projectname" formControlName="projectname" class="form-control ">
+                        <span *ngIf="!projectForm.get( 'projectData.projectname').valid && projectForm.get( 'projectData.projectname').touched " class="help-block "> 
+                            <span *ngIf="projectForm.get( 'projectData.projectname').errors[ 'nameIsForbidden'] "> This field is invalid</span>
+                        <span *ngIf="projectForm.get( 'projectData.projectname').errors[ 'required'] "> This field is required!</span>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text " formControlName="email" id="email" class="form-control ">
+                        <span *ngIf="!projectForm.get( 'projectData.email').valid && projectForm.get( 'projectData.email').touched " class="help-block "> Please enter a valid email</span>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Project Status</label>
+                    <select id="status" class="form-control">
+              <option value="Stable">Stable</option>
+              <option value="Critical">Critical</option>
+              <option value="Finished">Finished</option>
+            </select>
+                </div>
+                <div>
+                    <button class="btn btn-primary " [disabled]="!projectForm.valid " type="submit ">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
